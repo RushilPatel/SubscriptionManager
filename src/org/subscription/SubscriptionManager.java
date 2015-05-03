@@ -12,15 +12,6 @@ public class SubscriptionManager {
 
     private List<IChannel> channels;
 
-    private static SubscriptionManager subscriptionManager;
-
-    public static SubscriptionManager getSubscriptionManager(){
-        if(subscriptionManager == null){
-            subscriptionManager = new SubscriptionManager();
-        }
-        return subscriptionManager;
-    }
-
     public boolean addChannels(IChannel... channels){
         boolean anyError = false;
         if(channels != null){
@@ -66,4 +57,13 @@ public class SubscriptionManager {
         }
     }
 
+    public int getSubscriberCount(){
+        int count = 0;
+        if(this.channels != null){
+            for(IChannel channel : this.channels){
+                count += channel.getSubscriberCount();
+            }
+        }
+        return count;
+    }
 }

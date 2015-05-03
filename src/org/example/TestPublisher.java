@@ -40,7 +40,7 @@ public class TestPublisher {
         }
 
         //add channels to subscription manager
-        final SubscriptionManager manager = SubscriptionManager.getSubscriptionManager(); //singleton
+        final SubscriptionManager manager = new SubscriptionManager();
         manager.addChannels(websocketChannel, serverSocketChannel);
 
 
